@@ -14,6 +14,7 @@ pygame.display.set_caption("Space Invaders Redux")
 
 # Configuración del fondo
 background = pygame.image.load('assets/images/background.jpg')
+background = pygame.transform.scale(background, (screen_width, screen_height))
 
 # Configuración de FPS
 clock = pygame.time.Clock()
@@ -87,9 +88,9 @@ def main_game():
                     player.bullets.remove(bullet)
 
             if enemy.rect.colliderect(player.rect):
-                player_health -= 1  # Reducir la salud del jugador
+                player_health -= 0.35 # Reducir la salud del jugador
                 enemies.remove(enemy)  # Eliminar al enemigo que colisionó
-
+                print("Salud del enemigo: ", player_health)
                 if player_health <= 0:
                     running = False  # Termina el juego si se acaba la salud
 
